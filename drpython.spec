@@ -1,12 +1,12 @@
 Summary:	DrPython - cross-platform IDE to aid programming in Python
 Summary(pl):	DrPython - wieloplatformowe IDE wspomagaj±ce programowanie w Pythonie
 Name:		drpython
-Version:	3.10.11
+Version:	3.10.12
 Release:	1
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://osdn.dl.sourceforge.net/drpython/%{name}-%{version}.zip
-# Source0-md5:	d57e39c60b8b14a77938e9e7e8cfa3e5
+# Source0-md5:	78222b14e65f457dc366219ad512b927
 URL:		http://drpython.sourceforge.net/
 BuildRequires:	python-modules >= 1:2.3
 BuildRequires:	unzip
@@ -32,23 +32,23 @@ poprzez interfejs wxPython.
 
 %build
 chmod 644 *.py
+%{_bindir}/python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/drpython}
+install -d $RPM_BUILD_ROOT%{_bindir}
 
-install *.py $RPM_BUILD_ROOT%{_datadir}/drpython
-cp -a examples bitmaps $RPM_BUILD_ROOT%{_datadir}/drpython
+python -- setup.py install \
+	--root=$RPM_BUILD_ROOT \
+	--optimize=2
 
 echo '#!/bin/sh' > $RPM_BUILD_ROOT%{_bindir}/drpython
-echo 'cd %{_datadir}/drpython' >> $RPM_BUILD_ROOT%{_bindir}/drpython
+echo 'cd %{py_sitescriptdir}/drpython' >> $RPM_BUILD_ROOT%{_bindir}/drpython
 echo 'exec python drpython.pyo' >> $RPM_BUILD_ROOT%{_bindir}/drpython
 chmod 755 $RPM_BUILD_ROOT%{_bindir}/drpython
 
-%py_comp $RPM_BUILD_ROOT%{_datadir}/drpython
-%py_ocomp $RPM_BUILD_ROOT%{_datadir}/drpython
-
-find $RPM_BUILD_ROOT%{_datadir} -not -wholename '*/drpython/examples/*' -name \*.py -exec rm -f {} \;
+find $RPM_BUILD_ROOT%{py_sitescriptdir} -not -wholename '*/drpython/examples/*' -name \*.py -exec rm -f {} \;
+rm -rf $RPM_BUILD_ROOT%{py_sitescriptdir}/drpython/bitmaps/{16,24}/.xvpics
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -57,4 +57,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog.txt documentation/*
 %attr(755,root,root) %{_bindir}/drpython
-%{_datadir}/drpython
+%dir %{py_sitescriptdir}/drpython
+%{py_sitescriptdir}/drpython/*.py[oc]
+%{py_sitescriptdir}/drpython/examples
+%doc %{py_sitescriptdir}/drpython/documentation
+%dir %{py_sitescriptdir}/drpython/bitmaps
+%{py_sitescriptdir}/drpython/bitmaps/*.ico
+%{py_sitescriptdir}/drpython/bitmaps/*.png
+%dir %{py_sitescriptdir}/drpython/bitmaps/16
+%{py_sitescriptdir}/drpython/bitmaps/16/*.png
+%dir %{py_sitescriptdir}/drpython/bitmaps/24
+%{py_sitescriptdir}/drpython/bitmaps/24/*.png
