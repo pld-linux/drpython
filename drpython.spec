@@ -1,7 +1,6 @@
-
 %include	/usr/lib/rpm/macros.python
-
-Summary:	drpython
+Summary:	DrPython - cross-platform IDE to aid programming in Python
+Summary(pl):	DrPython - wieloplatformowe IDE pomagaj±ce w programowaniu w Pythonie
 Name:		drpython
 Version:	3.2.0
 Release:	0.1
@@ -17,8 +16,16 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-drpython
+DrPython is a clean and simple yet powerful and highly customizable
+editor/environment for developing programs written in the Python
+programming Language. It is written in Python, and uses the wxWidgets
+GUI Library through the use of wxPython.
 
+%description -l pl
+DrPython to przejrzysty i prosty, ale potê¿ny i wysoko konfigurowalny
+edytor/¶rodowisko do tworzenia programów napisanych w jêzyku Python.
+Jest napisany w Pythonie i u¿ywa biblioteki graficznej wxWidgets
+poprzez interfejs wxPython.
 
 %prep
 %setup -q 
@@ -30,10 +37,10 @@ chmod 0644 *.py
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/drpython}
 
-python /usr/share/python2.3/compileall.pyc -l .
+python %{py_scriptdir}/compileall.pyc -l .
 
-install *.py[co] $RPM_BUILD_ROOT%{_datadir}/drpython/
-cp -a examples bitmaps $RPM_BUILD_ROOT%{_datadir}/drpython/
+install *.py[co] $RPM_BUILD_ROOT%{_datadir}/drpython
+cp -a examples bitmaps $RPM_BUILD_ROOT%{_datadir}/drpython
 
 echo '#!/bin/sh' > $RPM_BUILD_ROOT%{_bindir}/drpython
 echo 'cd %{_datadir}/drpython' >> $RPM_BUILD_ROOT%{_bindir}/drpython
