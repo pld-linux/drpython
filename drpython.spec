@@ -5,10 +5,10 @@ Version:	3.7.9
 Release:	0.1
 License:	GPL
 Group:		Libraries/Python
-Source0:	http://voxel.dl.sourceforge.net/sourceforge/drpython/%{name}-%{version}.zip
+Source0:	http://heanet.dl.sourceforge.net/drpython/%{name}-%{version}.zip
 # Source0-md5:	fc0dc7298195bf37e9294520ac053cb9
 URL:		http://drpython.sourceforge.net/
-BuildRequires:	python-modules >= 2.3
+BuildRequires:	python-modules >= 1:2.3
 BuildRequires:	unzip
 %pyrequires_eq	python-modules
 Requires:	python-wxPython >= 2.5.1.5
@@ -31,7 +31,7 @@ poprzez interfejs wxPython.
 %setup -q 
 
 %build
-chmod 0644 *.py
+chmod 644 *.py
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -43,7 +43,7 @@ cp -a examples bitmaps $RPM_BUILD_ROOT%{_datadir}/drpython
 echo '#!/bin/sh' > $RPM_BUILD_ROOT%{_bindir}/drpython
 echo 'cd %{_datadir}/drpython' >> $RPM_BUILD_ROOT%{_bindir}/drpython
 echo 'exec python drpython.pyo' >> $RPM_BUILD_ROOT%{_bindir}/drpython
-chmod 0755 $RPM_BUILD_ROOT%{_bindir}/drpython
+chmod 755 $RPM_BUILD_ROOT%{_bindir}/drpython
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}/drpython
 %py_ocomp $RPM_BUILD_ROOT%{_datadir}/drpython
