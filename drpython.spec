@@ -48,7 +48,7 @@ chmod 755 $RPM_BUILD_ROOT%{_bindir}/drpython
 %py_comp $RPM_BUILD_ROOT%{_datadir}/drpython
 %py_ocomp $RPM_BUILD_ROOT%{_datadir}/drpython
 
-find $RPM_BUILD_ROOT%{_datadir} -name \*.py | xargs rm -f
+find $RPM_BUILD_ROOT%{_datadir} -not -wholename '*/drpython/examples/*' -name \*.py -exec rm -f {} \;
 
 %clean
 rm -rf $RPM_BUILD_ROOT
