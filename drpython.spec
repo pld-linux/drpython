@@ -37,15 +37,18 @@ chmod 0644 *.py
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/drpython}
 
-python %{py_scriptdir}/compileall.pyc -l .
-
-install *.py[co] $RPM_BUILD_ROOT%{_datadir}/drpython
+install *.py $RPM_BUILD_ROOT%{_datadir}/drpython
 cp -a examples bitmaps $RPM_BUILD_ROOT%{_datadir}/drpython
 
 echo '#!/bin/sh' > $RPM_BUILD_ROOT%{_bindir}/drpython
 echo 'cd %{_datadir}/drpython' >> $RPM_BUILD_ROOT%{_bindir}/drpython
-echo 'exec python drpython.pyc' >> $RPM_BUILD_ROOT%{_bindir}/drpython
+echo 'exec python drpython.pyo' >> $RPM_BUILD_ROOT%{_bindir}/drpython
 chmod 0755 $RPM_BUILD_ROOT%{_bindir}/drpython
+
+%py_comp $RPM_BUILD_ROOT%{_datadir}/drpython
+%py_ocomp $RPM_BUILD_ROOT%{_datadir}/drpython
+
+find $RPM_BUILD_ROOT%{_datadir} -name \*.py | xargs rm -f
 
 %clean
 rm -rf $RPM_BUILD_ROOT
