@@ -5,7 +5,7 @@ Version:	3.10.12
 Release:	1
 License:	GPL
 Group:		Libraries/Python
-Source0:	http://osdn.dl.sourceforge.net/drpython/%{name}-%{version}.zip
+Source0:	http://dl.sourceforge.net/drpython/%{name}-%{version}.zip
 # Source0-md5:	78222b14e65f457dc366219ad512b927
 URL:		http://drpython.sourceforge.net/
 BuildRequires:	python-modules >= 1:2.3
