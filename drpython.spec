@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.python
 Summary:	DrPython - cross-platform IDE to aid programming in Python
 Summary(pl):	DrPython - wieloplatformowe IDE pomagaj±ce w programowaniu w Pythonie
 Name:		drpython
