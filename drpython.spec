@@ -5,8 +5,8 @@ Version:	3.9.0
 Release:	1
 License:	GPL
 Group:		Libraries/Python
-Source0:	http://heanet.dl.sourceforge.net/drpython/%{name}-%{version}.zip
-# Source0-md5:	6a30cf3af8001f42104f22968be3a520
+Source0:	http://osdn.dl.sourceforge.net/drpython/%{name}-%{version}.zip
+# Source0-md5:	75ea519dd7c79a1840cb94e0a77c5d40
 URL:		http://drpython.sourceforge.net/
 BuildRequires:	python-modules >= 1:2.3
 BuildRequires:	unzip
