@@ -2,12 +2,12 @@
 Summary:	DrPython - cross-platform IDE to aid programming in Python
 Summary(pl):	DrPython - wieloplatformowe IDE pomagaj±ce w programowaniu w Pythonie
 Name:		drpython
-Version:	3.2.0
+Version:	3.2.2
 Release:	0.1
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/drpython/%{name}-%{version}.zip
-# Source0-md5:	57554a41f0290ac8083f96c319015bd6
+# Source0-md5:	d3fec5c2989f2067d7e0b5bdb604c072
 URL:		http://drpython.sourceforge.net/
 BuildRequires:	python-modules >= 2.3
 %pyrequires_eq	python-modules
