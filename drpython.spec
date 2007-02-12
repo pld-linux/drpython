@@ -1,5 +1,5 @@
 Summary:	DrPython - cross-platform IDE to aid programming in Python
-Summary(pl):	DrPython - wieloplatformowe IDE wspomagaj±ce programowanie w Pythonie
+Summary(pl.UTF-8):   DrPython - wieloplatformowe IDE wspomagajÄ…ce programowanie w Pythonie
 Name:		drpython
 Version:	3.10.13
 Release:	1
@@ -21,10 +21,10 @@ editor/environment for developing programs written in the Python
 programming Language. It is written in Python, and uses the wxWidgets
 GUI Library through the use of wxPython.
 
-%description -l pl
-DrPython to przejrzysty i prosty, ale potê¿ny i wysoko konfigurowalny
-edytor/¶rodowisko do tworzenia programów napisanych w jêzyku Python.
-Jest napisany w Pythonie i u¿ywa biblioteki graficznej wxWidgets
+%description -l pl.UTF-8
+DrPython to przejrzysty i prosty, ale potÄ™Å¼ny i wysoko konfigurowalny
+edytor/Å›rodowisko do tworzenia programÃ³w napisanych w jÄ™zyku Python.
+Jest napisany w Pythonie i uÅ¼ywa biblioteki graficznej wxWidgets
 poprzez interfejs wxPython.
 
 %prep
