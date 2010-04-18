@@ -1,12 +1,12 @@
 Summary:	DrPython - cross-platform IDE to aid programming in Python
 Summary(pl.UTF-8):	DrPython - wieloplatformowe IDE wspomagające programowanie w Pythonie
 Name:		drpython
-Version:	3.10.13
-Release:	3
+Version:	3.11.1
+Release:	1
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/drpython/%{name}-%{version}.zip
-# Source0-md5:	becd6411f4334e4c01c720342ccbdbd8
+# Source0-md5:	a972744c88cdfdf76b0bfdc15f553446
 URL:		http://drpython.sourceforge.net/
 BuildRequires:	python-modules >= 1:2.3
 BuildRequires:	unzip
@@ -28,7 +28,7 @@ Jest napisany w Pythonie i używa biblioteki graficznej wxWidgets
 poprzez interfejs wxPython.
 
 %prep
-%setup -q
+%setup -q -n %{name}_%{version}
 
 %build
 chmod 644 *.py
@@ -43,21 +43,25 @@ python -- setup.py install \
 	--optimize=2
 
 echo '#!/bin/sh' > $RPM_BUILD_ROOT%{_bindir}/drpython
-echo 'cd %{py_sitescriptdir}/drpython' >> $RPM_BUILD_ROOT%{_bindir}/drpython
-echo 'exec python drpython.pyo' >> $RPM_BUILD_ROOT%{_bindir}/drpython
+echo 'exec python %{py_sitescriptdir}/drpython/drpython.pyw' >> $RPM_BUILD_ROOT%{_bindir}/drpython
 chmod 755 $RPM_BUILD_ROOT%{_bindir}/drpython
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -not -wholename '*/drpython/examples/*' -name \*.py -exec rm -f {} \;
 rm -rf $RPM_BUILD_ROOT%{py_sitescriptdir}/drpython/bitmaps/{16,24}/.xvpics
+# win32 only
+rm $RPM_BUILD_ROOT%{_bindir}/postinst.py
+# replace by %{_bindir}/drpython
+rm $RPM_BUILD_ROOT%{py_sitescriptdir}/drpython/drpython.lin
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog.txt documentation/*
+%doc Changelog.txt History.txt Notes.txt todo.txt documentation/*
 %attr(755,root,root) %{_bindir}/drpython
 %dir %{py_sitescriptdir}/drpython
+%{py_sitescriptdir}/drpython/drpython.pyw
 %{py_sitescriptdir}/drpython/*.py[oc]
 %{py_sitescriptdir}/drpython/examples
 %doc %{py_sitescriptdir}/drpython/documentation
@@ -68,3 +72,4 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitescriptdir}/drpython/bitmaps/16/*.png
 %dir %{py_sitescriptdir}/drpython/bitmaps/24
 %{py_sitescriptdir}/drpython/bitmaps/24/*.png
+%{py_sitescriptdir}/*.egg-info
