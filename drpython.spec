@@ -8,7 +8,10 @@ Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/drpython/%{name}-%{version}.zip
 # Source0-md5:	a972744c88cdfdf76b0bfdc15f553446
 URL:		http://drpython.sourceforge.net/
+BuildRequires:	python
+BuildRequires:	python-devel
 BuildRequires:	python-modules >= 1:2.3
+BuildRequires:	rpm-pythonprov
 BuildRequires:	unzip
 %pyrequires_eq	python-modules
 Requires:	python-wxPython >= 2.5.1.5
