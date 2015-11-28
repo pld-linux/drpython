@@ -37,7 +37,7 @@ poprzez interfejs wxPython.
 
 %build
 chmod 644 *.py
-%{_bindir}/python setup.py build
+%{_bindir}/%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
