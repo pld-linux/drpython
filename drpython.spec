@@ -9,6 +9,7 @@ Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/project/drpython/DrPython%20Current/%{version}/%{orgname}_%{version}.zip
 # Source0-md5:	eb59cf61d840af274d2940ce1a3c2bd4
 URL:		http://drpython.sourceforge.net/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	pydoc
 BuildRequires:	python
 BuildRequires:	python-devel
